@@ -1,4 +1,3 @@
-
 ;;下の変なの消す
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
@@ -23,6 +22,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
+
+;; インデントタブを使わないでスペースを使う設定
+(setq-default tab-width 4 indent-tabs-mode nil)
 ;;=====================================================================================
 
 ;;===============================ハイライト関係==========================================
@@ -87,5 +89,8 @@
 (add-hook 'ruby-mode-hook 'flycheck-mode)
 ;; php
 (add-hook 'php-mode-hook 'flycheck-mode)
+;; javascript
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;=====================================================================================
 
