@@ -32,6 +32,12 @@
 (column-number-mode t)
 ;;=====================================================================================
 
+;;=============================== mac用 の keybind =====================================
+;; mac のときは command -> control
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier (quote control))
+  (setq ns-control-modifier (quote command)))
+
 ;;===============================ハイライト関係==========================================
 (global-hl-line-mode t)                   ;; 現在行をハイライト
 (show-paren-mode t)                       ;; 対応する括弧をハイライト
@@ -155,16 +161,4 @@
 ;;========================================================================================
 
 
-;;===================================go-lang-mode=========================================
-(require 'exec-path-from-shell)
-(let ((envs '("PATH" "GOPATH")))
-  (exec-path-from-shell-copy-envs envs))
 
-(add-hook 'before-save-hook 'gofmt-before-save)
-
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-;;; flycheck
-(add-hook 'go-mode-hook 'flycheck-mode)
-
-;;========================================================================================
