@@ -162,4 +162,9 @@
 ;;; flycheck
 (add-hook 'go-mode-hook 'flycheck-mode)
 
-;;========================================================================================
+;;====================================cuda-mode==============================================
+(setq auto-mode-alist
+  (cons (cons "\\.cu$" 'c++-mode) auto-mode-alist))
+(setq auto-mode-alist
+  (cons (cons "\\.cuh$" 'c++-mode) auto-mode-alist))
+;;=================================
